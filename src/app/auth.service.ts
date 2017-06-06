@@ -4,7 +4,6 @@ import { ENDPOINT, KEY } from './API';
 
 @Injectable()
 export class AuthService {
-  // Content-Type: application/json' --header 'Accept: application/json' --header 'Authorization: Bearer 
   private headers = new Headers ({
     'Content-Type': 'application/x-www-form-urlencoded',
     'Accept': 'application/json'
