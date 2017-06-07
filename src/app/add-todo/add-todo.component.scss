@@ -31,7 +31,8 @@
         flex-direction: column;
 
         // min width for mobile screens of 320px down
-        min-width: 300px;
+        max-width: 360px;        
+        width: 100%;        
         min-height: 135px;
 
         //
