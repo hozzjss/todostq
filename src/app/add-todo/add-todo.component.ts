@@ -16,16 +16,18 @@ export class AddTodoComponent implements OnInit {
   ) { }
   save(form: HTMLFormElement, input: HTMLInputElement) {
     // create the todo and notify dashboard of the change
-    this.todos.create(new FormData(form))
-      .subscribe(response => {
-        if (response.status !== 200) {
-          this.data.renewSession(response.status);
-          return false;
-        }
-        input.value = '';
-        const data: CreateResponse = response.json();
-        this.updateCreated.emit({ongoing: data.tasks, done: []});
-      });
+    if (input.value.length > 0) {
+      this.todos.create(new FormData(form))
+        .subscribe(response => {
+          if (response.status !== 200) {
+            this.data.renewSession(response.status);
+            return false;
+          }
+          input.value = '';
+          const data: CreateResponse = response.json();
+          this.updateCreated.emit({ ongoing: data.tasks, done: [] });
+        });
+    }
   }
   ngOnInit() {
   }
