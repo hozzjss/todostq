@@ -1,5 +1,5 @@
 @import 'app/colors';
-
+@import 'app/mixins';
 /* You can add global styles to this file, and also import other style files */
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -64,16 +64,41 @@ input, button {
 * {
     font-family: 'Open Sans', sans-serif;
 }
-
-body {
+// generic styles
+html, body {
 	background-color: $green;
+	@include full-width-height;
 }
+
+a {
+	color: $green;
+	text-decoration: none;
+	&:visited {
+		color: $green - 30;
+	}
+	&:active {
+		color: $green + 30;
+	}
+}
+
+.warning {
+	color: $red;
+	margin-bottom: 4px;
+}
+
+//
+.log-reg-switch {
+	color: $dark-gray;
+	font-weight: 600;
+}
+
 .badge {
     width: 25px;
     height: 25px;
     display: inline-block;
-    background-color: #fff;
+    background-color: $white;
     border-radius: 50%;
     font-size: 18px;
 	text-align: center;
+	color: #000;
 }

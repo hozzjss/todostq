@@ -1,0 +1,33 @@
+@import '../mixins';
+@import '../colors';
+.login {
+    font-size: 12px;
+    @include full-width-height;
+    @include centring-flex(center);
+    flex-direction: column;
+}
+
+form {
+    @include centring-flex(center);
+    min-height: 300px;
+    min-width: 300px;
+    flex-direction: column;
+    background-color: $white;
+    padding: 0 25px;
+    box-sizing: border-box;
+
+    input, button {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    button {
+        @include badge-button;
+        @include active-bg($green + 20);
+        margin-bottom: 10px;
+    }
+
+    input {
+        @include nice-input;
+    }
+}

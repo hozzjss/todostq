@@ -1,6 +1,6 @@
 <div class="add-todo">
   <form #form (submit)="save(form, input)">
-    <input class="title" #input name="title" type="text" placeholder="Task">
+    <input autofocus="autofocus" class="title" #input name="title" type="text" placeholder="Task">
     <div class="controls">
       <button class="cancel" type="button">Cancel <span class="badge">×</span></button>
       <button class="save" type="submit">Save <span class="badge">></span></button>

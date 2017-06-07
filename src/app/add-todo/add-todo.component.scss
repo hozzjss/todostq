@@ -1,14 +1,5 @@
 @import '../colors';
-@mixin active-bg($color) {
-    &:active {
-        background-color: $color;
-    }
-}
-@mixin centring-flex($justify: space-between) {
-    display: flex;
-    justify-content: $justify;
-    align-items: center;
-}
+@import '../mixins';
 
 // the whole component
 .add-todo {
@@ -18,8 +9,7 @@
     z-index: 10;
 
     // full width and height of the viewport
-    width: 100%;
-    height: 100%;
+    @include full-width-height;
 
     //
     background-color: $new-task-background;
@@ -32,7 +22,8 @@
         
         //
         input, button {
-            font-size: 16px;            
+            font-size: 16px;
+            font-weight: 600;      
         }
 
         // 
@@ -49,16 +40,7 @@
 
         // the new task title input
         .title {
-            
-            //
-            width: 100%;
-            box-sizing: border-box;
-            margin: 10px 0;
-            padding: 10px;
-            background-color: $light-white;
-            
-            // separation from controls
-            margin-bottom: 8%;
+            @include nice-input;
         }
     }
 }
@@ -71,10 +53,8 @@
 
     // general styling for buttons
     button {
-        @include centring-flex;
+        @include badge-button;
         width: 48%;
-        text-align: left;
-        padding: 0 4%;
     }
     .save {
         @include active-bg($green + 20)
