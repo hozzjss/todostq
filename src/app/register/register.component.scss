@@ -1,0 +1,12 @@
+@import '../mixins';
+
+.register {
+    font-size: 12px;
+    @include full-width-height;
+    @include centring-flex(center);
+    flex-direction: column;
+}
+form {
+    @include nice-form;
+    min-height: 340px;
+}

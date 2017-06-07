@@ -1,3 +1,5 @@
+@import 'colors';
+
 @mixin active-bg($color) {
     &:active {
         background-color: $color;
@@ -39,5 +41,33 @@
 
     &::placeholder {
         color: $done-title;
+    }
+}
+
+@mixin nice-form {
+    @include centring-flex(center);
+    background-color: $white;
+    box-sizing: border-box;
+    min-height: 300px;
+    min-width: 300px;
+    padding: 0 25px;
+    
+    //
+    flex-direction: column;
+
+    //
+    input, button {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    button {
+        @include badge-button;
+        @include active-bg($green + 20);
+        margin-bottom: 10px;
+    }
+
+    input {
+        @include nice-input;
     }
 }

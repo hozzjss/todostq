@@ -23,10 +23,9 @@ export class LoginComponent implements OnInit {
   login(form: HTMLFormElement) {
     const handleError = (err: Response) => {
       // if the credentials are incorrect notify the user
-      // else notify the user to try again
-      console.log('ERR', err.status);
+      // else tell the user to try again
       this.problem = true;
-      if (err.status == 401)
+      if (err.status === 401)
         this.error = 'Incorrect email or password';
       else
         this.error = 'please try again';

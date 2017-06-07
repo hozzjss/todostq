@@ -1,7 +1,10 @@
-<form #form (submit)="register(form)">
-  <input required name="name" placeholder="name" type="name">
-  <input required name="email" placeholder="Email" type="email">
-  <input required name="password" placeholder="Password" type="password">
-  <input value="REGISTER" type="submit">
-  <p>Have an account? <a [routerLink]="['/login']">Login here</a></p>
-</form>
+<div class="register">
+  <form ngNativeValidate #form (submit)="register(form)">
+    <input autofocus="autofocus" autocomplete="name" required name="name" placeholder="Name" type="name">
+    <input autocomplete="email" required name="email" placeholder="Email" type="email">
+    <input autocomplete="new-password" required name="password" placeholder="Password" type="password">
+    <button type="submit">Register <span class="badge">></span></button>
+    <p *ngIf="problem" class="warning"> {{ error }} </p>
+    <p class="log-reg-switch">Have an account? <a [routerLink]="['/login']">Login here</a></p>
+  </form>
+</div>
