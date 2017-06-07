@@ -19,13 +19,11 @@ export class AddTodoComponent implements OnInit {
     if (input.value.length > 0) {
       this.todos.create(new FormData(form))
         .subscribe(response => {
-          if (response.status !== 200) {
-            this.data.renewSession(response.status);
-            return false;
+          if (response) {
+            input.value = '';
+            const data: CreateResponse = response.json();
+            this.updateCreated.emit({ ongoing: data.tasks, done: [] });
           }
-          input.value = '';
-          const data: CreateResponse = response.json();
-          this.updateCreated.emit({ ongoing: data.tasks, done: [] });
         });
     }
   }

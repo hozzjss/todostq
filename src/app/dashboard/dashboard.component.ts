@@ -24,25 +24,21 @@ export class DashboardComponent implements OnInit {
   getTodos() {
     this.todos.getTodos()
       .subscribe(response => {
-        if (response.status !== 200) {
-          this.data.renewSession(response.status);
-          return false;
+        if (response) {
+          const data: Todo[] = response.json();
+          this.ongoingTodos = data;
+          this.getDone();
         }
-        const data: Todo[] = response.json();
-        this.ongoingTodos = data;
-        this.getDone();
       });
   }
   getDone() {
     // gets todos marked as done
     this.todos.getDone()
       .subscribe(response => {
-        if (response.status !== 200) {
-          this.data.renewSession(response.status);
-          return false;
+        if (response) {
+          const data: Todo[] = response.json();
+          this.doneTodos = data;
         }
-        const data: Todo[] = response.json();
-        this.doneTodos = data;
       });
   }
   updateTodos(Todos: { done: Todo[], ongoing: {} }) {

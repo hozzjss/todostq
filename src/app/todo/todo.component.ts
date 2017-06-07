@@ -21,15 +21,13 @@ export class TodoComponent implements OnInit {
     if (!this.todo.done) {
       this.todoService.markDone(this.todo.id)
         .subscribe(response => {
-          if (response.status !== 200) {
-            this.data.renewSession(response.status);
-            return false;
+          if (response) {
+            const data: DoneResponse = response.json();
+            this.updateDone.emit({
+              ongoing: data.todo,
+              done: data.done
+            });
           }
-          const data: DoneResponse = response.json();
-          this.updateDone.emit({
-            ongoing: data.todo,
-            done: data.done
-          });
         });
     }
   }
