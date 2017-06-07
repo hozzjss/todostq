@@ -54,11 +54,17 @@ table {
 input, button {
 	border: 0;
 	background-color: $green;
+	// UX/mobile: buttons need to be at least this size 
+	// for the user to be able to touch them
 	min-height: 48px;
 	min-width: 48px;
 	&:focus {
 		outline-width: 0;
 	}
+}
+
+button {
+	cursor: pointer;
 }
 
 * {
@@ -101,4 +107,9 @@ a {
     font-size: 18px;
 	text-align: center;
 	color: #000;
+}
+
+.done-todo {
+    text-decoration: line-through;
+    color: $done-title;
 }

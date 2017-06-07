@@ -1,0 +1,56 @@
+@import '../mixins';
+@import '../colors';
+
+.dashboard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: $white;
+    padding: 2%;
+    box-sizing: border-box;
+}
+.ongoing, .done {
+    box-sizing: border-box;
+    margin: 0 1%;
+    width: 100%;
+    background-color: $white;
+    margin-bottom: 10px;
+    .content {
+        background-color: $green;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.header {
+    @include centring-flex;
+    color: $white;
+    font-weight: 600;
+    padding: 0 4%;
+    min-height: 60px;
+    background-color: $green;
+    border-bottom: 1px $white solid;
+    border-top: 1px $white solid;
+    h3 {
+        display: inline-block;
+    }
+    button {
+        background-color: $white;
+        font-size: 14px;
+        font-weight: 600;
+        color: $green;
+        width: 96px;
+        &:active {
+            background-color: $white - 10;
+        }
+    }
+}
+
+@media (min-width: 768px) { 
+    .dashboard {
+        flex-direction: row;
+    }
+    .ongoing, .done {
+        width: 50%;
+    }
+ }

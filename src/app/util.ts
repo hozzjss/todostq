@@ -17,6 +17,8 @@ export const generateOptions = (token: string, method: string, body?: any) => {
     body
   });
 };
+
+// from object of objects to an array of objects
 export const objectToArray = (obj) => {
   // tslint:disable:forin
   const arr = [];
@@ -24,4 +26,4 @@ export const objectToArray = (obj) => {
     arr.push(obj[item]);
   }
   return arr;
-}
+};

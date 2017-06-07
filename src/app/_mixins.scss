@@ -22,7 +22,6 @@
     color: $white;
 	text-align: left;
 	padding: 0 4%;
-    cursor: pointer;
 }
 
 @mixin nice-input {
@@ -49,7 +48,7 @@
     background-color: $white;
     box-sizing: border-box;
     min-height: 300px;
-    min-width: 300px;
+    max-width: 360px;
     padding: 0 25px;
     
     //

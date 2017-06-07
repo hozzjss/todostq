@@ -27,9 +27,11 @@ export class LoginComponent implements OnInit {
       this.problem = true;
       if (err.status === 401)
         this.error = 'Incorrect email or password';
+
       else
         this.error = 'please try again';
     };
+
     // register the token >> redirect to dashboard
     this.auth.login(new FormData(form))
       .subscribe(response => {

@@ -10,6 +10,7 @@ import { DataService } from '../services/data.service';
 })
 export class AddTodoComponent implements OnInit {
   @Output() updateCreated = new EventEmitter();
+  @Output() cancel = new EventEmitter();
   constructor(
     private todos: TodosService,
     private data: DataService
@@ -26,6 +27,9 @@ export class AddTodoComponent implements OnInit {
           }
         });
     }
+  }
+  cancelAdding() {
+    this.cancel.emit();
   }
   ngOnInit() {
   }

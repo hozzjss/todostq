@@ -1,5 +1,23 @@
-<div>
-  <app-add-todo (updateCreated)="updateTodos($event)"></app-add-todo>
-  <app-ongoing-tasks (updateTodos)="updateTodos($event)" [todos]="ongoingTodos"></app-ongoing-tasks>
-  <app-done-tasks [todos]="doneTodos"></app-done-tasks>
+<!--<div>
+</div>-->
+
+<app-add-todo (cancel)="toggleAdd()" *ngIf="addTodos" (updateCreated)="updateTodos($event)"></app-add-todo>
+<div class="dashboard">
+  <div class="ongoing">
+    <div class="header">
+      <h3>TODO ITEMS</h3>
+      <button (click)="toggleAdd()" >ADD</button>
+    </div>
+    <div class="content">
+      <app-ongoing-tasks (updateTodos)="updateTodos($event)" [todos]="ongoingTodos"></app-ongoing-tasks>
+    </div>
+  </div>
+  <div class="done">
+    <div class="header">
+      <h3>DONE ITEMS</h3>
+    </div>
+    <div class="content">
+      <app-done-tasks [todos]="doneTodos"></app-done-tasks>
+    </div>
+  </div>
 </div>

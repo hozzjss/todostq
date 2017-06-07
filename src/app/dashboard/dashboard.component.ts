@@ -12,6 +12,7 @@ import { objectToArray } from '../util';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  addTodos = false;
   ongoingTodos: Todo[];
   doneTodos: Todo[];
 
@@ -41,6 +42,12 @@ export class DashboardComponent implements OnInit {
         }
       });
   }
+
+  toggleAdd() {
+    console.log('TOGGLE ADD', this.addTodos);
+    this.addTodos = !this.addTodos;
+  }
+
   updateTodos(Todos: { done: Todo[], ongoing: {} }) {
     // re-init arrays and add the newly received updates
     // ongoing todos is an array only if it's empty

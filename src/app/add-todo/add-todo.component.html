@@ -2,7 +2,7 @@
   <form #form (submit)="save(form, input)">
     <input autofocus="autofocus" class="title" #input name="title" type="text" placeholder="Task">
     <div class="controls">
-      <button class="cancel" type="button">Cancel <span class="badge">×</span></button>
+      <button (click)="cancelAdding()" class="cancel" type="button">Cancel <span class="badge">×</span></button>
       <button class="save" type="submit">Save <span class="badge">></span></button>
     </div>
   </form>
