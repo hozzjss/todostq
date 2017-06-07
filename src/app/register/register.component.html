@@ -1,7 +1,7 @@
 <form #form (submit)="register(form)">
-  <input name="name" placeholder="name" type="name">
-  <input name="email" placeholder="Email" type="email">
-  <input name="password" placeholder="Password" type="password">
+  <input required name="name" placeholder="name" type="name">
+  <input required name="email" placeholder="Email" type="email">
+  <input required name="password" placeholder="Password" type="password">
   <input value="REGISTER" type="submit">
   <p>Have an account? <a [routerLink]="['/login']">Login here</a></p>
 </form>

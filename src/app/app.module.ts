@@ -4,15 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { AuthService } from './auth.service';
 import { AppRoutingModule } from './routing/app-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { TodosService } from './todos.service';
-import { DataService } from './data.service';
+import { AuthService } from './services/auth.service';
+import { TodosService } from './services/todos.service';
+import { DataService } from './services/data.service';
+import { HttpRequestService } from './services/http-request.service';
 import { OngoingTasksComponent } from './ongoing-tasks/ongoing-tasks.component';
 import { DoneTasksComponent } from './done-tasks/done-tasks.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TodoComponent } from './todo/todo.component';
+import { AddTodoComponent } from './add-todo/add-todo.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoginComponent,
     OngoingTasksComponent,
     DoneTasksComponent,
-    DashboardComponent
+    DashboardComponent,
+    TodoComponent,
+    AddTodoComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   providers: [
     AuthService,
     TodosService,
-    DataService
+    DataService,
+    HttpRequestService
   ],
   bootstrap: [AppComponent]
 })

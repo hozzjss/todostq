@@ -1,6 +1,8 @@
 <p>
   dashboard works!
 </p>
-<ul>
-  <li *ngFor="let todo of todosList"> {{ todo.title }} </li>
-</ul>
+<div>
+  <app-add-todo (updateCreated)="updateTodos($event)"></app-add-todo>
+  <app-ongoing-tasks (updateTodos)="updateTodos($event)" [todos]="ongoingTodos"></app-ongoing-tasks>
+  <app-done-tasks [todos]="doneTodos"></app-done-tasks>
+</div>

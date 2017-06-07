@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { ENDPOINT, KEY } from './API';
+import { generateRequestLink } from '../util';
+import { directory } from '../api-directory';
+import { HttpRequestService } from './http-request.service';
 
 @Injectable()
 export class AuthService {
@@ -9,15 +11,15 @@ export class AuthService {
     'Accept': 'application/json'
   });
   constructor(
-    private http: Http
+    private http: HttpRequestService
   ) { }
 
   register(form: FormData) {
-    return this.http.post(`${ENDPOINT}/register?api_key=${KEY}`, form, this.headers);
+    return this.http.request('post', directory.register, form);
   }
 
   login(form: FormData) {
-    return this.http.post(`${ENDPOINT}/login?api_key=${KEY}`, form, this.headers);
+    return this.http.request('post', directory.login, form);
   }
 
 }

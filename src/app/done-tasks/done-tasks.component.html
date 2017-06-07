@@ -1,3 +1,10 @@
-<p>
-  done-tasks works!
-</p>
+<div>
+  <h3>DONE ITEMS</h3>
+  <div>
+    <ul>
+      <li *ngFor="let todo of todos">
+        <app-todo [todo]="todo"></app-todo>
+      </li>
+    </ul>
+  </div>
+</div>

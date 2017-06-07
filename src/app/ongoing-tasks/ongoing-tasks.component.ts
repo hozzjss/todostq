@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Todo } from '../models/todo.model';
 
 @Component({
   selector: 'app-ongoing-tasks',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ongoing-tasks.component.scss']
 })
 export class OngoingTasksComponent implements OnInit {
-
+  @Input() todos: Todo[];
+  @Output() updateTodos = new EventEmitter<{ongoing: {}, done: Todo[]}>()
+  handleDone(event) {
+    this.updateTodos.emit(event);
+  }
   constructor() { }
 
   ngOnInit() {
