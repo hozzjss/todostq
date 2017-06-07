@@ -1,0 +1,88 @@
+@import '../colors';
+@mixin active-bg($color) {
+    &:active {
+        background-color: $color;
+    }
+}
+@mixin centring-flex($justify: space-between) {
+    display: flex;
+    justify-content: $justify;
+    align-items: center;
+}
+
+// the whole component
+.add-todo {
+
+    // position it absolute so that it's overlaying the app
+    position: absolute;
+    z-index: 10;
+
+    // full width and height of the viewport
+    width: 100%;
+    height: 100%;
+
+    //
+    background-color: $new-task-background;
+
+    // flexified so that it's centered
+    @include centring-flex(center);
+    
+    //
+    form {
+        
+        //
+        input, button {
+            font-size: 16px;            
+        }
+
+        // 
+        display: flex;
+        flex-direction: column;
+
+        // min width for mobile screens of 320px down
+        min-width: 300px;
+        min-height: 135px;
+
+        //
+        padding: 20px;
+        background-color: $white;
+
+        // the new task title input
+        .title {
+            
+            //
+            width: 100%;
+            box-sizing: border-box;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: $light-white;
+            
+            // separation from controls
+            margin-bottom: 8%;
+        }
+    }
+}
+
+// for the controls save and cancel
+.controls {
+
+    //
+    display: flex;
+
+    // general styling for buttons
+    button {
+        @include centring-flex;
+        width: 48%;
+        text-align: left;
+        padding: 0 4%;
+    }
+    .save {
+        @include active-bg($green + 20)
+    }
+    .cancel {
+        background-color: $red;
+        margin-right: 5%;
+        @include active-bg($red + 20);
+    }
+    
+}
