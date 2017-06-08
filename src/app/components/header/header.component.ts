@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../services/data.service';
-import { LoginResponse } from '../models/login-response.model';
+import { DataService } from '../../services/data.service';
+import { LoginResponse } from '../../models/login-response.model';
 
 @Component({
   selector: 'app-header',

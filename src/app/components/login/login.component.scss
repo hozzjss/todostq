@@ -1,9 +1,9 @@
-@import '../mixins';
-@import '../colors';
+@import'../../sass/mixins';
+@import'../../sass/colors';
 .login {
     font-size: 12px;
     @include full-width-height;
-    @include centring-flex(center);
+    @include centering-flex(center);
     flex-direction: column;
 }
 

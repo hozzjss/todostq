@@ -1,9 +1,9 @@
-@import '../mixins';
+@import'../../sass/mixins';
 
 .register {
     font-size: 12px;
     @include full-width-height;
-    @include centring-flex(center);
+    @include centering-flex(center);
     flex-direction: column;
 }
 form {

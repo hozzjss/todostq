@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Todo } from '../models/todo.model';
-import { TodosService } from '../services/todos.service';
-import { DoneResponse } from '../models/done-response.model';
-import { DataService } from '../services/data.service';
+import { Todo } from '../../models/todo.model';
+import { TodosService } from '../../services/todos.service';
+import { DoneResponse } from '../../models/done-response.model';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-todo',

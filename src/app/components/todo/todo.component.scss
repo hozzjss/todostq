@@ -1,10 +1,14 @@
-@import '../colors';
+@import'../../sass/colors';
+@import'../../sass/mixins';
 div {
+    box-sizing: border-box;
+    @include centering-flex(flex-start);
     background: $white;
     margin: 6px;
     padding: 10px;
     font-size: 16px;
     font-weight: 600;
+    min-height: 46px;
 }
 
 .done-todo {

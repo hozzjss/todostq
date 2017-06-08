@@ -1,5 +1,16 @@
-@import '../mixins';
-@import '../colors';
+@import'../../sass/mixins';
+@import'../../sass/colors';
+
+@mixin dashboardQuery($size, $top, $left) {
+    @media (min-width: $size) {
+    .dashboard {
+        padding: $top $left;
+    }
+    .ongoing, .done {
+        margin: 0 15px 10px;
+    }
+ }
+}
 
 .dashboard {
     width: 100%;
@@ -12,9 +23,8 @@
 .ongoing, .done {
     box-sizing: border-box;
     margin: 0 1%;
-    width: 100%;
+    width: 98%;
     background-color: $white;
-    margin-bottom: 10px;
     .content {
         background-color: $green;
         display: flex;
@@ -23,7 +33,7 @@
 }
 
 .header {
-    @include centring-flex;
+    @include centering-flex;
     color: $white;
     font-weight: 600;
     padding: 0 4%;
@@ -54,3 +64,7 @@
         width: 50%;
     }
  }
+
+@include dashboardQuery(992px, 25px, 50px);
+@include dashboardQuery(1200px, 40px, 100px);
+

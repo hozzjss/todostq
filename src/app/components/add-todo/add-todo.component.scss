@@ -1,5 +1,5 @@
-@import '../colors';
-@import '../mixins';
+@import'../../sass/colors';
+@import'../../sass/mixins';
 
 // the whole component
 .add-todo {
@@ -15,7 +15,7 @@
     background-color: $new-task-background;
 
     // flexified so that it's centered
-    @include centring-flex(center);
+    @include centering-flex(center);
     
     //
     form {

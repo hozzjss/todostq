@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { TodosService } from '../services/todos.service';
-import { CreateResponse } from '../models/create-response.model';
-import { DataService } from '../services/data.service';
+import { TodosService } from '../../services/todos.service';
+import { CreateResponse } from '../../models/create-response.model';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-add-todo',

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { directory } from '../api-directory';
+import { directory } from '../API/api-directory';
 import { HttpRequestService } from './http-request.service';
 
 @Injectable()

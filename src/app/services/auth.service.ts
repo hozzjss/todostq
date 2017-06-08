@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import { generateRequestLink } from '../util';
-import { directory } from '../api-directory';
+import { generateRequestLink } from '../util/util';
+import { directory } from '../API/api-directory';
 import { HttpRequestService } from './http-request.service';
 
 @Injectable()

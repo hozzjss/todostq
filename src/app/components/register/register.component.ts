@@ -1,9 +1,9 @@
 // tslint:disable:curly
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
-import { RegisterResponse } from '../models/register-response.model';
+import { AuthService } from '../../services/auth.service';
+import { RegisterResponse } from '../../models/register-response.model';
 import { Router } from '@angular/router';
-import { DataService } from '../services/data.service';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-register',

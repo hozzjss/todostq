@@ -1,6 +1,6 @@
 // tslint:disable:curly
 import { Injectable } from '@angular/core';
-import { generateRequestLink, generateOptions } from '../util';
+import { generateRequestLink, generateOptions } from '../util/util';
 import { Http } from '@angular/http';
 import { DataService } from './data.service';
 

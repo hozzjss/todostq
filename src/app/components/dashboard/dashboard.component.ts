@@ -1,10 +1,10 @@
 // tslint:disable:curly
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../services/data.service';
-import { TodosService } from '../services/todos.service';
-import { Todo } from '../models/todo.model';
+import { DataService } from '../../services/data.service';
+import { TodosService } from '../../services/todos.service';
+import { Todo } from '../../models/todo.model';
 import { Router } from '@angular/router';
-import { objectToArray } from '../util';
+import { objectToArray } from '../../util/util';
 
 @Component({
   selector: 'app-dashboard',

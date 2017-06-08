@@ -1,4 +1,4 @@
-import { ENDPOINT, KEY } from './API';
+import { ENDPOINT, KEY } from '../API/API';
 import { RequestOptions, Headers } from '@angular/http';
 
 export const generateRequestLink = (task: string) => {
