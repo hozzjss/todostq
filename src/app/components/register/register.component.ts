@@ -20,7 +20,6 @@ export class RegisterComponent {
       this.problem = true;
       if (err.status === 422)
         this.error = 'Email already taken.';
-
       else
         this.error = 'Error, please try again';
     };
