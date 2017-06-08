@@ -24,7 +24,8 @@ export class AddTodoComponent {
     const pushTodo = (response: Response) => {
       input.value = '';
       const data: CreateResponse = response.json();
-      this.updateCreated.emit([[], objectToArray(data.tasks)]);
+      // passing undefined triggers the default parameter and doesn't update the list
+      this.updateCreated.emit([undefined, objectToArray(data.tasks)]);
     };
 
     if (input.value.length > 0)

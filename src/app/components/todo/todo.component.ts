@@ -1,38 +1,31 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Todo } from '../../models/todo.model';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { TodosService } from '../../services/todos.service';
 import { DoneResponse } from '../../models/done-response.model';
-import { DataService } from '../../services/data.service';
+import { Todo } from '../../models/todo.model';
+import { objectToArray } from '../../util/util';
+import { Response } from '@angular/http';
 
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent  {
   @Input() todo: Todo;
-  @Output() updateDone = new EventEmitter<{}>();
+  @Output() updateDone = new EventEmitter<Todo[][]>();
   constructor(
     private todoService: TodosService,
-    private data: DataService
   ) { }
 
   markDone() {
+    // only if the todo is not marked as done
     if (!this.todo.done) {
-      this.todoService.markDone(this.todo.id)
-        .subscribe(response => {
-          if (response) {
-            const data: DoneResponse = response.json();
-            this.updateDone.emit({
-              ongoing: data.todo,
-              done: data.done
-            });
-          }
-        });
+      const emitUpdate = (response: Response) => {
+        const data: DoneResponse = response.json();
+        this.updateDone.emit([objectToArray(data.done), objectToArray(data.todo)]);
+      };
+      this.todoService.markDone(this.todo.id).subscribe(emitUpdate);
     }
-  }
-
-  ngOnInit() {
   }
 
 }

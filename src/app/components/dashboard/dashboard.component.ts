@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { TodosService } from '../../services/todos.service';
 import { Todo } from '../../models/todo.model';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,59 +13,36 @@ export class DashboardComponent implements OnInit {
   addTodos = false;
   ongoingTodos: Todo[];
   doneTodos: Todo[];
-  online = false;
   constructor(
     private data: DataService,
-    private todos: TodosService,
-    private router: Router
-  ) {  }
+    private todos: TodosService
+  ) { }
 
   getTodos() {
     this.todos.getTodos()
       .subscribe(response => {
-        this.online = true;
-        if (response) {
-          const data: Todo[] = response.json();
-          this.ongoingTodos = data;
-          this.getDone();
-        }
+        this.ongoingTodos = response.json();
+        this.getDone();
       });
   }
+
   getDone() {
     // gets todos marked as done
-    this.todos.getDone()
-      .subscribe(response => {
-        if (response) {
-          const data: Todo[] = response.json();
-          this.doneTodos = data;
-        }
-      });
+    this.todos.getDone().subscribe(response => this.doneTodos = response.json());
   }
 
   toggleAdd() {
-    console.log('TOGGLE ADD', this.addTodos);
     this.addTodos = !this.addTodos;
   }
 
-  updateTodos(data: Todo[][]) {
-    console.log('[updateTodos]: Data', data);
-    this.doneTodos = data[0].length ? data[0] : this.doneTodos;
-    this.ongoingTodos = data[1].length ? data[1] : this.ongoingTodos;
-    // re-init arrays and add the newly received updates
-    // ongoing todos is an array only if it's empty
-    // if (Todos.ongoing instanceof Array)
-    //   this.ongoingTodos = [];
-
-    // if (Todos.done.length > 0)
-    //   this.doneTodos = Todos.done;
-
-    // if (Object.keys(Todos.ongoing).length > 0) {
-    //   this.ongoingTodos = [];
-    //   this.ongoingTodos = objectToArray(Todos.ongoing);
-    // }
+  updateTodos(done = this.doneTodos, ongoing = this.ongoingTodos) {
+    // takes new updates instead of making another request
+    this.doneTodos = done;
+    this.ongoingTodos = ongoing;
   }
-  // once the component is loaded grab todos
+  
   ngOnInit() {
+    // once the component is loaded grab todos
     // if the user is not authenticated log them in else load!
     if (!this.data.getToken())
       this.data.renewSession('Not logged in');
