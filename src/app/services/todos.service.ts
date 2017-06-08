@@ -9,7 +9,6 @@ export class TodosService {
     private http: HttpRequestService
   ) { }
 
-
   create(todoTitle: FormData) {
     return this.http.request('post', directory.create, todoTitle);
   }
