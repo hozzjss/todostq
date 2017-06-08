@@ -1,21 +1,40 @@
+<!-- the add interface should be above everything -->
 <app-add-todo (cancel)="toggleAdd()" *ngIf="addTodos" (updateCreated)="updateTodos($event)"></app-add-todo>
+
+<!--header on the top-->
 <app-header></app-header>
+
+<!-- Dashboard itself -->
 <div class="dashboard">
+
+  <!-- ongoing tasks -->
   <div class="ongoing">
+
+    <!-- todos list header -->
     <div class="tasks-header">
       <h3>TODO ITEMS</h3>
       <button (click)="toggleAdd()" >ADD</button>
     </div>
+    <!-- End todos list header-->
+
     <div class="content">
       <app-ongoing-tasks (updateTodos)="updateTodos($event)" [todos]="ongoingTodos"></app-ongoing-tasks>
     </div>
   </div>
+  <!-- End ongoing tasks -->
+
+  <!-- done tasks -->
   <div class="done">
+    <!-- todos list header -->
     <div class="tasks-header">
       <h3>DONE ITEMS</h3>
     </div>
+    <!-- End todos list header-->
+
     <div class="content">
       <app-done-tasks [todos]="doneTodos"></app-done-tasks>
     </div>
   </div>
+  <!-- End done tasks -->
 </div>
+<!-- End Dashboard -->
