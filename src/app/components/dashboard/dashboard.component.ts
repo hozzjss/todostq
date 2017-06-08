@@ -4,7 +4,6 @@ import { DataService } from '../../services/data.service';
 import { TodosService } from '../../services/todos.service';
 import { Todo } from '../../models/todo.model';
 import { Router } from '@angular/router';
-import { objectToArray } from '../../util/util';
 
 @Component({
   selector: 'app-dashboard',
@@ -49,19 +48,22 @@ export class DashboardComponent implements OnInit {
     this.addTodos = !this.addTodos;
   }
 
-  updateTodos(Todos: { done: Todo[], ongoing: {} }) {
+  updateTodos(data: Todo[][]) {
+    console.log('[updateTodos]: Data', data);
+    this.doneTodos = data[0].length ? data[0] : this.doneTodos;
+    this.ongoingTodos = data[1].length ? data[1] : this.ongoingTodos;
     // re-init arrays and add the newly received updates
     // ongoing todos is an array only if it's empty
-    if (Todos.ongoing instanceof Array)
-      this.ongoingTodos = [];
+    // if (Todos.ongoing instanceof Array)
+    //   this.ongoingTodos = [];
 
-    if (Todos.done.length > 0)
-      this.doneTodos = Todos.done;
+    // if (Todos.done.length > 0)
+    //   this.doneTodos = Todos.done;
 
-    if (Object.keys(Todos.ongoing).length > 0) {
-      this.ongoingTodos = [];
-      this.ongoingTodos = objectToArray(Todos.ongoing);
-    }
+    // if (Object.keys(Todos.ongoing).length > 0) {
+    //   this.ongoingTodos = [];
+    //   this.ongoingTodos = objectToArray(Todos.ongoing);
+    // }
   }
   // once the component is loaded grab todos
   ngOnInit() {
