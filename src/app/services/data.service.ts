@@ -10,11 +10,6 @@ export class DataService {
     private router: Router
   ) { }
 
-  registerToken(token: string) {
-    this.token = token;
-    this.router.navigate(['dashboard']);
-  }
-
   getToken() {
     return this.token;
   }
@@ -25,6 +20,8 @@ export class DataService {
 
   storeUser(user: LoginResponse) {
     this.user = user;
+    this.token = user.token;
+    this.router.navigate(['dashboard']);
   }
 
   renewSession(error?) {

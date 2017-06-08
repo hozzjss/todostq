@@ -22,12 +22,10 @@ export class LoginComponent implements OnInit {
 
   login(form: HTMLFormElement) {
     const handleError = (err: Response) => {
-      // if the credentials are incorrect notify the user
-      // else tell the user to try again
+      // triggers showing the error notification
       this.problem = true;
       if (err.status === 401)
         this.error = 'Incorrect email or password';
-
       else
         this.error = 'please try again';
     };
@@ -36,7 +34,6 @@ export class LoginComponent implements OnInit {
     this.auth.login(new FormData(form))
       .subscribe(response => {
         const data: LoginResponse = response.json();
-        this.data.registerToken(data.token);
         this.data.storeUser(data);
       }, handleError);
   }

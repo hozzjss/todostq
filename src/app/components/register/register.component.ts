@@ -30,7 +30,6 @@ export class RegisterComponent implements OnInit {
     this.auth.register(new FormData(form))
       .subscribe(response => {
         const data: RegisterResponse = response.json();
-        this.data.registerToken(data.user.token);
         this.data.storeUser(data.user);
       }, handleError);
   }
