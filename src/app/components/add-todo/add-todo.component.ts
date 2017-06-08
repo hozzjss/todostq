@@ -16,10 +16,12 @@ export class AddTodoComponent {
   @Output() updateCreated = new EventEmitter<Todo[][]>();
   @Output() cancel = new EventEmitter<any>();
   constructor(
-    private todos: TodosService
+    private todos: TodosService,
+    private data: DataService
   ) { }
   save(form: HTMLFormElement, input: HTMLInputElement) {
 
+    const handleError = (response: Response) => this.data.renewSession();
     // clear input and push the recieved todos to dashboard
     const pushTodo = (response: Response) => {
       input.value = '';
@@ -29,7 +31,8 @@ export class AddTodoComponent {
     };
 
     if (input.value.length > 0)
-      this.todos.create(new FormData(form)).subscribe(pushTodo);
+      this.todos.create(new FormData(form)).subscribe(pushTodo, handleError);
+    return false;
   }
 
   cancelAdding() {
