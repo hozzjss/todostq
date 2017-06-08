@@ -5,6 +5,6 @@
     <input autocomplete="new-password" required name="password" placeholder="Password" type="password">
     <button type="submit">Register <span class="badge">></span></button>
     <p *ngIf="problem" class="warning"> {{ error }} </p>
-    <p class="log-reg-switch">Have an account? <a [routerLink]="['/login']">Login here</a></p>
+    <p class="footnote">Have an account? <a [routerLink]="['/login']">Login here</a></p>
   </form>
 </div>
