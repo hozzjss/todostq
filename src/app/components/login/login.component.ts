@@ -32,5 +32,6 @@ export class LoginComponent {
     // register the token >> redirect to dashboard
     this.auth.login(new FormData(form))
       .subscribe(response => this.data.storeUser(response.json()) , handleError);
+    return false;
   }
 }

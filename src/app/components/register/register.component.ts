@@ -26,5 +26,6 @@ export class RegisterComponent {
 
     this.auth.register(new FormData(form))
       .subscribe(response => this.data.storeUser(response.json().user), handleError);
+    return false;
   }
 }
