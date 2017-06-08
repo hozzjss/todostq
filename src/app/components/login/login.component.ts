@@ -1,7 +1,6 @@
 // tslint:disable:curly
 import { Component} from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { LoginResponse } from '../../models/login-response.model';
 import { DataService } from '../../services/data.service';
 import { Response } from '@angular/http';
 
