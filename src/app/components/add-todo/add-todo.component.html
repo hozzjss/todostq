@@ -2,8 +2,8 @@
   <form #form (submit)="save(form, input)">
     <input autofocus="autofocus" class="title" #input name="title" type="text" placeholder="Task">
     <div class="controls">
-      <button (click)="cancelAdding()" class="cancel" type="button">Cancel <span class="badge">×</span></button>
-      <button class="save" type="submit">Save <span class="badge">></span></button>
+      <button (click)="cancelAdding()" class="cancel" type="button">Cancel <img class="badge" src="assets/close.png" alt=""></button>
+      <button class="save" type="submit">Save <img class="badge" src="assets/forward.png" alt=""></button>
     </div>
   </form>
 </div>

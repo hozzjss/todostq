@@ -2,12 +2,12 @@
 @import'../../sass/colors';
 
 @mixin dashboardQuery($size, $top, $left) {
-    @media (min-width: $size) {
+    @media screen and (min-width: $size) {
     .dashboard {
         padding: $top $left;
     }
     .ongoing, .done {
-        margin: 0 15px 10px;
+        margin: 0 15px;
     }
  }
 }
@@ -29,25 +29,25 @@
         background-color: $green;
         display: flex;
         flex-direction: column;
+        padding: 0 12px;
     }
 }
 
-.header {
+.tasks-header {
     @include centering-flex;
     color: $white;
-    font-weight: 600;
-    padding: 0 4%;
+    padding: 0 12px;
     min-height: 60px;
     background-color: $green;
     border-bottom: 1px $white solid;
     border-top: 1px $white solid;
     h3 {
         display: inline-block;
+        font-size: 20px;
     }
     button {
         background-color: $white;
-        font-size: 14px;
-        font-weight: 600;
+        font-size: 16px;
         color: $green;
         width: 96px;
         &:active {
@@ -61,6 +61,9 @@
         flex-direction: row;
     }
     .ongoing, .done {
+        .content {
+            min-height: 540px;
+        }
         width: 50%;
     }
  }

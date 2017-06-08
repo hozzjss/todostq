@@ -1,8 +1,20 @@
+@mixin headerQuery($size, $sides) {
+    @media screen and (min-width: $size) {
+    .user {
+        padding: 0 $sides;
+    }
+ }
+}
+
 .user {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     padding: 5px;
+}
+
+.user-details {
+    margin: 0 15px;
 }
 
 .user-details h3 {
@@ -14,3 +26,6 @@
     width: 90px;
     margin-right: 10px;
 }
+
+@include headerQuery(992px, 50px);
+@include headerQuery(1200px, 100px);

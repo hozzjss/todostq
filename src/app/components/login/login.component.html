@@ -2,7 +2,7 @@
   <form ngNativeValidate #form (submit)="login(form)">
     <input autofocus="autofocus" autocomplete="email" required name="email" placeholder="Email" type="email">
     <input autocomplete="current-password"  required name="password" placeholder="Password" type="password">
-    <button type="submit badge-button">LOGIN <span class="badge">></span> </button>
+    <button type="submit badge-button">LOGIN <img class="badge" src="assets/forward.png" alt=""> </button>
     <p *ngIf="problem" class="warning"> {{ error }} </p>
     <p class="footnote">Not registered? <a [routerLink]="['/register']">Create an account</a></p>
   </form>
