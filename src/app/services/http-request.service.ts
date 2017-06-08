@@ -12,8 +12,6 @@ export class HttpRequestService {
   ) { }
 
   request(method: string, task: string, body?: any) {
-    if (!this.data.getToken())
-      this.data.renewSession('Not logged in');
     const token = this.data.getToken();
     const url = generateRequestLink(task);
     const options = generateOptions(token, method, body);

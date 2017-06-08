@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginResponse } from '../models/login-response.model';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class DataService {
@@ -20,12 +21,16 @@ export class DataService {
 
   storeUser(user: LoginResponse) {
     this.user = user;
-    this.token = user.token;
-    this.router.navigate(['dashboard']);
+    // wait for the token then work with it
+    const token$ = new Subject<string>();
+    token$.subscribe((value) => {
+      this.token = value;
+      this.router.navigate(['dashboard']);
+    });
+    token$.next(this.user.token);
   }
 
-  renewSession(error?) {
-    console.log(error);
+  renewSession() {
     this.router.navigate(['login']);
   }
 

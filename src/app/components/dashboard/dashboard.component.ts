@@ -45,7 +45,7 @@ export class DashboardComponent implements OnInit {
     // once the component is loaded grab todos
     // if the user is not authenticated log them in else load!
     if (!this.data.getToken())
-      this.data.renewSession('Not logged in');
+      this.data.renewSession();
     else
       this.getTodos();
   }
