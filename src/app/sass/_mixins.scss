@@ -1,11 +1,13 @@
 @import 'colors';
 
+// the background when the button is mousedowned
 @mixin active-bg($color) {
     &:active {
         background-color: $color;
     }
 }
 
+// a reusable centering flex display
 @mixin centering-flex($justify: space-between) {
     display: flex;
     justify-content: $justify;
@@ -17,6 +19,7 @@
     height: 100%;
 }
 
+// the container for a button with a badge
 @mixin badge-button {
     @include centering-flex;
     color: $white;
@@ -24,19 +27,15 @@
 	padding: 0 4%;
 }
 
+// every single input in my app is a nice input <3
 @mixin nice-input {
-    //
     &:focus {
         border: $green groove 1px;
     }
-    width: 100%;
     box-sizing: border-box;
-    margin: 0 0 10px 0;
+    margin-bottom: 8%;
     padding: 10px;
     background-color: $light-white;
-    // separation from controls
-    margin-bottom: 8%;
-
     &::placeholder {
         color: $done-title;
     }
@@ -44,15 +43,15 @@
 
 @mixin nice-form {
     @include centering-flex(center);
+    flex-direction: column;
+
     background-color: $white;
     box-sizing: border-box;
+    width: 100%;
     min-height: 300px;
     max-width: 360px;
-    width: 100%;
     padding: 0 25px;
     
-    //
-    flex-direction: column;
 
     //
     input, button {
