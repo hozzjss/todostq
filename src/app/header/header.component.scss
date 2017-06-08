@@ -1,0 +1,16 @@
+.user {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px;
+}
+
+.user-details h3 {
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px
+}
+.user-img img{
+    width: 90px;
+    margin-right: 10px;
+}

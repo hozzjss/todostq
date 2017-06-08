@@ -15,16 +15,17 @@ export class DashboardComponent implements OnInit {
   addTodos = false;
   ongoingTodos: Todo[];
   doneTodos: Todo[];
-
+  online = false;
   constructor(
     private data: DataService,
     private todos: TodosService,
     private router: Router
-  ) { }
+  ) {  }
 
   getTodos() {
     this.todos.getTodos()
       .subscribe(response => {
+        this.online = true;
         if (response) {
           const data: Todo[] = response.json();
           this.ongoingTodos = data;
@@ -66,7 +67,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     // if the user is not authenticated log them in else load!
     if (!this.data.getToken())
-      this.router.navigate(['login']);
+      this.data.renewSession('Not logged in');
     else
       this.getTodos();
   }

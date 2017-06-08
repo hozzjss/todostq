@@ -16,6 +16,7 @@ import { DoneTasksComponent } from './done-tasks/done-tasks.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TodoComponent } from './todo/todo.component';
 import { AddTodoComponent } from './add-todo/add-todo.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AddTodoComponent } from './add-todo/add-todo.component';
     DoneTasksComponent,
     DashboardComponent,
     TodoComponent,
-    AddTodoComponent
+    AddTodoComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

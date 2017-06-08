@@ -31,6 +31,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(response => {
         const data: RegisterResponse = response.json();
         this.data.registerToken(data.user.token);
+        this.data.storeUser(data.user);
       }, handleError);
   }
   ngOnInit() {

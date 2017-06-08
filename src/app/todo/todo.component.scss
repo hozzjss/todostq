@@ -6,3 +6,9 @@ div {
     font-size: 16px;
     font-weight: 600;
 }
+
+.done-todo {
+    background-color: $light-white;
+    text-decoration: line-through;
+    color: $done-title;
+}

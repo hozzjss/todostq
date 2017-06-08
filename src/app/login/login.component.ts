@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
       .subscribe(response => {
         const data: LoginResponse = response.json();
         this.data.registerToken(data.token);
+        this.data.storeUser(data);
       }, handleError);
   }
   ngOnInit() {
