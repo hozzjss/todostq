@@ -40,7 +40,7 @@ export class DashboardComponent implements OnInit {
     this.doneTodos = done;
     this.ongoingTodos = ongoing;
   }
-  
+
   ngOnInit() {
     // once the component is loaded grab todos
     // if the user is not authenticated log them in else load!
