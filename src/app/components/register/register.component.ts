@@ -1,5 +1,5 @@
 // tslint:disable:curly
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { RegisterResponse } from '../../models/register-response.model';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { DataService } from '../../services/data.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   error = '';
   problem = false;
   constructor(
@@ -28,12 +28,6 @@ export class RegisterComponent implements OnInit {
     };
 
     this.auth.register(new FormData(form))
-      .subscribe(response => {
-        const data: RegisterResponse = response.json();
-        this.data.storeUser(data.user);
-      }, handleError);
+      .subscribe(response => this.data.storeUser(response.json().user), handleError);
   }
-  ngOnInit() {
-  }
-
 }

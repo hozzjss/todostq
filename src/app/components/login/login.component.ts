@@ -1,5 +1,5 @@
 // tslint:disable:curly
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { LoginResponse } from '../../models/login-response.model';
 import { DataService } from '../../services/data.service';
@@ -10,7 +10,7 @@ import { Response } from '@angular/http';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   error = '';
   problem = false;
 
@@ -32,12 +32,6 @@ export class LoginComponent implements OnInit {
 
     // register the token >> redirect to dashboard
     this.auth.login(new FormData(form))
-      .subscribe(response => {
-        const data: LoginResponse = response.json();
-        this.data.storeUser(data);
-      }, handleError);
+      .subscribe(response => this.data.storeUser(response.json()) , handleError);
   }
-  ngOnInit() {
-  }
-
 }
