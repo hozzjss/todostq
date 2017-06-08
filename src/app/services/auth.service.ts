@@ -1,15 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-import { generateRequestLink } from '../util/util';
 import { directory } from '../API/api-directory';
 import { HttpRequestService } from './http-request.service';
 
 @Injectable()
 export class AuthService {
-  private headers = new Headers ({
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'Accept': 'application/json'
-  });
+
   constructor(
     private http: HttpRequestService
   ) { }
