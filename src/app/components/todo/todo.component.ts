@@ -23,8 +23,12 @@ export class TodoComponent {
     const handleError = (response: Response) => this.data.renewSession();
     // only if the todo is not marked as done
     if (!this.todo.done) {
+      // sent this todo to done todos list
       this.updateDone.emit(this.todo);
+      // send the request then
       this.todoService.markDone(this.todo.id)
+        // after that do nothing done todos are already updated
+        // the only error here is session expiration so renew session ^
         .subscribe(() => {}, handleError);
     }
   }
