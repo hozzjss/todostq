@@ -8,7 +8,7 @@ import { Todo } from '../../models/todo.model';
 })
 export class OngoingTasksComponent {
   @Input() todos: Todo[];
-  @Output() updateTodos = new EventEmitter<Todo[][]>();
+  @Output() updateTodos = new EventEmitter<Todo>();
 
   handleDone(event) {
     this.updateTodos.emit(event);

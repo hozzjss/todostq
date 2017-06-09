@@ -35,6 +35,12 @@ export class DashboardComponent implements OnInit {
     this.addTodos = !this.addTodos;
   }
 
+  addToDone(todo: Todo) {
+    todo.done = 1;
+    this.doneTodos.push(todo);
+    this.ongoingTodos = this.ongoingTodos.filter(item => item.id !== todo.id);
+  }
+
   updateTodos(done = this.doneTodos, ongoing = this.ongoingTodos) {
     // takes new updates instead of making another request
     this.doneTodos = done;

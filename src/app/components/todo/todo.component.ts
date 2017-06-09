@@ -11,9 +11,9 @@ import { Response } from '@angular/http';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent  {
+export class TodoComponent {
   @Input() todo: Todo;
-  @Output() updateDone = new EventEmitter<Todo[][]>();
+  @Output() updateDone = new EventEmitter<Todo>();
   constructor(
     private todoService: TodosService,
     private data: DataService
@@ -23,11 +23,9 @@ export class TodoComponent  {
     const handleError = (response: Response) => this.data.renewSession();
     // only if the todo is not marked as done
     if (!this.todo.done) {
-      const emitUpdate = (response: Response) => {
-        const data: DoneResponse = response.json();
-        this.updateDone.emit([objectToArray(data.done), objectToArray(data.todo)]);
-      };
-      this.todoService.markDone(this.todo.id).subscribe(emitUpdate, handleError);
+      this.updateDone.emit(this.todo);
+      this.todoService.markDone(this.todo.id)
+        .subscribe(() => {}, handleError);
     }
   }
 
