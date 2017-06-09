@@ -1,8 +1,9 @@
-import { ENDPOINT, KEY } from '../API/API';
 import { RequestOptions, Headers } from '@angular/http';
+import { environment as env } from 'environments/environment';
+
 
 export const generateRequestLink = (task: string) => {
-  return `${ENDPOINT}/${task}?api_key=${KEY}`;
+  return `${env.ENDPOINT}/${task}?api_key=${env.KEY}`;
 };
 
 // generates the options object which contains the headers
