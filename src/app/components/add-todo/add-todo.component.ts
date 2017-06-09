@@ -16,6 +16,7 @@ export class AddTodoComponent {
   @Output() updateCreated = new EventEmitter<Todo[][]>();
   @Output() cancel = new EventEmitter<any>();
   add = 'Save';
+  loading: boolean;
   constructor(
     private todos: TodosService,
     private data: DataService
@@ -25,6 +26,7 @@ export class AddTodoComponent {
     const handleError = (response: Response) => this.data.renewSession();
     // clear input and push the recieved todos to dashboard
     const pushTodo = (response: Response) => {
+      this.loading = false;
       input.value = '';
       const data: CreateResponse = response.json();
       // passing undefined triggers the default parameter and doesn't update the list
@@ -32,8 +34,14 @@ export class AddTodoComponent {
       this.add = 'Keep adding';
     };
 
-    if (input.value.length > 0)
+    if (input.value.length > 0) {
+      this.loading = true;
       this.todos.create(new FormData(form)).subscribe(pushTodo, handleError);
+    }
+  }
+
+  dontCancel(event: Event) {
+    event.stopPropagation();
   }
 
   cancelAdding() {
