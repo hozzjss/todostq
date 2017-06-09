@@ -1,6 +1,2 @@
 [optional] implement a generic notification component
 [optional] stay logged in and logout features
-add todo to fill everything but the form to be centered 
-    according to screen.innerheight or window.height
-    add-todo.height = header.clientHeight + dashboard.clientHeight + "px"
-    top = window.innerHeight/2 - form.clientHeight/2

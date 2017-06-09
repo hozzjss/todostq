@@ -1,6 +1,6 @@
 <app-loading *ngIf="loading"></app-loading>
-<div (click)="cancelAdding()" class="add-todo">
-  <form (click)="dontCancel($event)" #form (submit)="save(form, input, $event)">
+<div (click)="cancelAdding()" id="add-todo" class="add-todo">
+  <form id="add-todo-form" (click)="dontCancel($event)" #form (submit)="save(form, input, $event)">
     <input autofocus="autofocus" class="title" #input name="title" type="text" placeholder="Task">
     <div class="controls">
       <button (click)="cancelAdding()" class="cancel" type="button">Cancel <img class="badge" src="assets/close.png" alt=""></button>
