@@ -1,4 +1,4 @@
-<div class="add-todo">
+<div (click)="cancelAdding()" class="add-todo">
   <form #form (submit)="save(form, input, $event)">
     <input autofocus="autofocus" class="title" #input name="title" type="text" placeholder="Task">
     <div class="controls">
