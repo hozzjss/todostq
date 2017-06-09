@@ -20,18 +20,17 @@ export class DashboardComponent implements OnInit {
 
   getTodos() {
     this.todos.getTodos()
-      .subscribe(response => {
-        this.ongoingTodos = response.json();
-        this.getDone();
-      });
+      .subscribe(response => this.ongoingTodos = response.json());
   }
 
   getDone() {
     // gets todos marked as done
-    this.todos.getDone().subscribe(response => this.doneTodos = response.json());
+    this.todos.getDone()
+      .subscribe(response => this.doneTodos = response.json());
   }
 
   toggleAdd() {
+    // this should toggle showing add-todo
     this.addTodos = !this.addTodos;
   }
 
@@ -50,10 +49,12 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     // once the component is loaded grab todos
     // if the user is not authenticated log them in else load!
-    if (!this.data.getToken())
+    if (!this.data.getToken()) {
       this.data.renewSession();
-    else
+    } else {
       this.getTodos();
+      this.getDone();
+    }
   }
 
 }
