@@ -15,7 +15,8 @@ export class RegisterComponent {
     private auth: AuthService,
     private data: DataService
   ) { }
-  register(form: HTMLFormElement) {
+  register(form: HTMLFormElement, event: Event) {
+    event.preventDefault();
     const handleError = (err: Response) => {
       this.problem = true;
       if (err.status === 422)
@@ -26,6 +27,5 @@ export class RegisterComponent {
 
     this.auth.register(new FormData(form))
       .subscribe(response => this.data.storeUser(response.json().user), handleError);
-    return false;
   }
 }

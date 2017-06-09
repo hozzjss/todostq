@@ -19,7 +19,8 @@ export class LoginComponent {
   ) { }
 
 
-  login(form: HTMLFormElement) {
+  login(form: HTMLFormElement, event: Event) {
+    event.preventDefault();
     const handleError = (err: Response) => {
       // triggers showing the error notification
       this.problem = true;
@@ -32,6 +33,5 @@ export class LoginComponent {
     // register the token >> redirect to dashboard
     this.auth.login(new FormData(form))
       .subscribe(response => this.data.storeUser(response.json()) , handleError);
-    return false;
   }
 }

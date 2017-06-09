@@ -1,9 +1,9 @@
 <div class="register">
-  <form ngNativeValidate #form (submit)="register(form)">
+  <form ngNativeValidate #form (submit)="register(form, $event)">
     <input autofocus="autofocus" autocomplete="name" required name="name" placeholder="Name" type="name">
     <input autocomplete="email" required name="email" placeholder="Email" type="email">
     <input autocomplete="new-password" required name="password" placeholder="Password" type="password">
-    <button type="submit">Register <img class="badge" src="assets/forward.png" alt=""></button>
+    <button class="badge-button" type="submit">Register <img class="badge" src="assets/forward.png" alt=""></button>
     <p *ngIf="problem" class="warning"> {{ error }} </p>
     <p class="footnote">Have an account? <a [routerLink]="['/login']">Login here</a></p>
   </form>

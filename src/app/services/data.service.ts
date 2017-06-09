@@ -11,7 +11,7 @@ export class DataService {
   ) { }
 
   getToken(): string {
-    return this.user.token;
+    return this.user ? this.user.token : undefined;
   }
 
   getUser() {

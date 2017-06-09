@@ -1,5 +1,5 @@
 <div class="add-todo">
-  <form #form (submit)="save(form, input)">
+  <form #form (submit)="save(form, input, $event)">
     <input autofocus="autofocus" class="title" #input name="title" type="text" placeholder="Task">
     <div class="controls">
       <button (click)="cancelAdding()" class="cancel" type="button">Cancel <img class="badge" src="assets/close.png" alt=""></button>

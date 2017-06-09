@@ -19,8 +19,8 @@ export class AddTodoComponent {
     private todos: TodosService,
     private data: DataService
   ) { }
-  save(form: HTMLFormElement, input: HTMLInputElement) {
-
+  save(form: HTMLFormElement, input: HTMLInputElement, event: Event) {
+    event.preventDefault();
     const handleError = (response: Response) => this.data.renewSession();
     // clear input and push the recieved todos to dashboard
     const pushTodo = (response: Response) => {
@@ -32,7 +32,6 @@ export class AddTodoComponent {
 
     if (input.value.length > 0)
       this.todos.create(new FormData(form)).subscribe(pushTodo, handleError);
-    return false;
   }
 
   cancelAdding() {
