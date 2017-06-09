@@ -10,7 +10,8 @@ export class OngoingTasksComponent {
   @Input() todos: Todo[];
   @Output() updateTodos = new EventEmitter<Todo>();
 
-  handleDone(event) {
+  handleDone(event: Todo) {
+    // pass the passed todo to dashboard so that it adds it to done todos
     this.updateTodos.emit(event);
   }
 }
