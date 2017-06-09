@@ -1,0 +1,9 @@
+@import '../../sass/mixins';
+@import '../../sass/colors';
+
+.loading {
+    @include full-width-height;
+    @include centering-flex(center);
+    position: absolute;
+    background-color: $new-task-background;
+}

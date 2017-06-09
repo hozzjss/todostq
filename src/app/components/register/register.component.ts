@@ -9,6 +9,7 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+  loading: boolean;
   error = '';
   problem = false;
   constructor(
@@ -18,12 +19,14 @@ export class RegisterComponent {
   register(form: HTMLFormElement, event: Event) {
     event.preventDefault();
     const handleError = (err: Response) => {
+      this.loading = false;
       this.problem = true;
       if (err.status === 422)
         this.error = 'Email already taken.';
       else
         this.error = 'Error, please try again';
     };
+    this.loading = true;
 
     this.auth.register(new FormData(form))
       .subscribe(response => this.data.storeUser(response.json().user), handleError);

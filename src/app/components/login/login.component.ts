@@ -1,5 +1,5 @@
 // tslint:disable:curly
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { DataService } from '../../services/data.service';
 import { Response } from '@angular/http';
@@ -10,6 +10,7 @@ import { Response } from '@angular/http';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
+  loading: boolean;
   error = '';
   problem = false;
 
@@ -23,6 +24,7 @@ export class LoginComponent {
     event.preventDefault();
     const handleError = (err: Response) => {
       // triggers showing the error notification
+      this.loading = false;
       this.problem = true;
       if (err.status === 401)
         this.error = 'Incorrect email or password';
@@ -30,8 +32,10 @@ export class LoginComponent {
         this.error = 'please try again';
     };
 
+    this.loading = true;
+
     // register the token >> redirect to dashboard
     this.auth.login(new FormData(form))
-      .subscribe(response => this.data.storeUser(response.json()) , handleError);
+      .subscribe(response => this.data.storeUser(response.json()), handleError);
   }
 }

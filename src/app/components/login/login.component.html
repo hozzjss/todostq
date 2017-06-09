@@ -1,3 +1,4 @@
+<app-loading *ngIf="loading"></app-loading>
 <div class="login">
   <form ngNativeValidate #form (submit)="login(form, $event)">
     <input autofocus="autofocus" autocomplete="email" required name="email" placeholder="Email" type="email">
