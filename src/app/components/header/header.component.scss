@@ -1,7 +1,7 @@
 @mixin headerQuery($size, $sides) {
     @media screen and (min-width: $size) {
     .user {
-        padding: 0 $sides;
+        padding: 8px $sides;
     }
  }
 }
@@ -20,7 +20,7 @@
 .user-details h3 {
     color: #fff;
     font-weight: 600;
-    font-size: 18px
+    font-size: 20px
 }
 .user-img img{
     width: 90px;
