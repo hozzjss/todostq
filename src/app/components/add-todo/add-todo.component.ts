@@ -15,6 +15,7 @@ import { Todo } from '../../models/todo.model';
 export class AddTodoComponent {
   @Output() updateCreated = new EventEmitter<Todo[][]>();
   @Output() cancel = new EventEmitter<any>();
+  add = 'Save';
   constructor(
     private todos: TodosService,
     private data: DataService
@@ -28,6 +29,7 @@ export class AddTodoComponent {
       const data: CreateResponse = response.json();
       // passing undefined triggers the default parameter and doesn't update the list
       this.updateCreated.emit([undefined, objectToArray(data.tasks)]);
+      this.add = 'Keep adding';
     };
 
     if (input.value.length > 0)
@@ -35,6 +37,7 @@ export class AddTodoComponent {
   }
 
   cancelAdding() {
+    this.add = 'Save';
     this.cancel.emit();
   }
 }
