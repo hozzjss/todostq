@@ -28,3 +28,13 @@ export const objectToArray = (obj) => {
   }
   return arr;
 };
+export const adjustLayout = () => {
+  const bodyHeight = document.getElementsByTagName('body')[0].clientHeight;
+  const dashboardHeight = document.getElementsByClassName('dashboard')[0].clientHeight;
+  const headerHeight = document.getElementsByTagName('header')[0].clientHeight;
+  const totalHeight = dashboardHeight + headerHeight + 'px';
+  const addTodoEl = document.getElementById('add-todo');
+  const formEl = document.getElementById('add-todo-form');
+  addTodoEl.style.height = totalHeight;
+  formEl.style.top = (window.innerHeight / 2) - (formEl.clientHeight / 2) + 'px';
+};

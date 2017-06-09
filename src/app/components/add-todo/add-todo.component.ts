@@ -4,7 +4,7 @@ import { TodosService } from '../../services/todos.service';
 import { CreateResponse } from '../../models/create-response.model';
 import { DataService } from '../../services/data.service';
 import { Response } from '@angular/http';
-import { objectToArray } from '../../util/util';
+import { objectToArray, adjustLayout } from '../../util/util';
 import { Todo } from '../../models/todo.model';
 
 @Component({
@@ -50,16 +50,6 @@ export class AddTodoComponent implements OnInit {
     this.cancel.emit();
   }
   ngOnInit() {
-    const adjustLayout = () => {
-      const bodyHeight = document.getElementsByTagName('body')[0].clientHeight;
-      const dashboardHeight = document.getElementsByClassName('dashboard')[0].clientHeight;
-      const headerHeight = document.getElementsByTagName('header')[0].clientHeight;
-      const totalHeight = dashboardHeight + headerHeight + 'px';
-      const addTodoEl = document.getElementById('add-todo');
-      const formEl = document.getElementById('add-todo-form');
-      addTodoEl.style.height = totalHeight;
-      formEl.style.top = (window.innerHeight / 2) - (formEl.clientHeight / 2) + 'px';
-    };
     adjustLayout();
     window.onresize = adjustLayout;
   }
