@@ -27,6 +27,7 @@
         position: fixed;
         // 
         display: flex;
+        box-sizing: border-box;
         flex-direction: column;
 
         // min width for mobile screens of 320px down
