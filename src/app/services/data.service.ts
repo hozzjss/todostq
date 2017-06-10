@@ -23,12 +23,12 @@ export class DataService {
     private notificationService: NotificationService
   ) { }
 
-  getTodos() {
+  getTodos(): void {
     this.todos.getTodos()
       .subscribe(response => this.ongoingTodos = response.json());
   }
 
-  create(form: HTMLFormElement) {
+  create(form: HTMLFormElement): void {
     // get Todo title
     const todoTitle = form.getElementsByTagName('input')[0].value;
     // construct todo being loaded and mark it as being loading
@@ -55,24 +55,24 @@ export class DataService {
       this.notificationService.notify('Session expired please relogin.');
       this.authService.renewSession();
     };
-    return this.todos.create(new FormData(form))
+    this.todos.create(new FormData(form))
       .subscribe(handleResponse, handleError);
   }
 
-  getDone() {
+  getDone(): void {
     // gets todos marked as done
     this.todos.getDone()
       .subscribe(response => this.doneTodos = response.json());
   }
 
-  addToDone(todo: Todo) {
+  addToDone(todo: Todo): void {
     // move it to done
     this.doneTodos.push(todo);
     // remove this todo from ongoingTodos
     this.ongoingTodos = this.ongoingTodos.filter(item => item.id !== todo.id);
   }
 
-  markDone(todo: Todo) {
+  markDone(todo: Todo): void {
     this.addToDone(todo);
     const handleError = (response: Response) => this.authService.renewSession();
     // send this todo to done todos list
@@ -87,7 +87,7 @@ export class DataService {
       }, handleError);
   }
 
-  addToOngoing(todo: Todo) {
+  addToOngoing(todo: Todo): void {
     this.ongoingTodos.push(todo);
   }
 

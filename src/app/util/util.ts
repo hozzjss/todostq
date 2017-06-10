@@ -2,12 +2,12 @@ import { RequestOptions, Headers, URLSearchParams } from '@angular/http';
 import { environment as env } from 'environments/environment';
 
 
-export const generateRequestLink = (task: string) => {
+export const generateRequestLink = (task: string): string => {
   return `${env.ENDPOINT}/${task}`;
 };
 
 // generates the options object which contains the headers
-export const generateOptions = (token: string, method: string, body?: any) => {
+export const generateOptions = (token: string, method: string, body?: any): RequestOptions => {
   const headers = new Headers({
     'Accept': 'application/json',
     'Authorization': `Bearer ${token}`
@@ -23,7 +23,7 @@ export const generateOptions = (token: string, method: string, body?: any) => {
 };
 
 // from object of objects to an array of objects
-export const objectToArray = (obj) => {
+export const objectToArray = (obj: object): any[] => {
   // tslint:disable:forin
   if (obj instanceof Array) {
     return obj;
@@ -34,7 +34,8 @@ export const objectToArray = (obj) => {
   }
   return arr;
 };
-export const adjustLayout = () => {
+
+export const adjustLayout = (): void => {
   const bodyHeight = document.getElementsByTagName('body')[0].clientHeight;
   const dashboardHeight = document.getElementsByClassName('dashboard')[0].clientHeight;
   const headerHeight = document.getElementsByTagName('header')[0].clientHeight;
@@ -47,4 +48,4 @@ export const adjustLayout = () => {
   formEl.style.top = (window.innerHeight / 2) - (formEl.clientHeight / 2) + 'px';
 };
 
-export const genRandomId = () => Math.round(Math.random() * 999999);
+export const genRandomId = (): number => Math.round(Math.random() * 999999);

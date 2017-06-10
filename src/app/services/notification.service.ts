@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class NotificationService {
   notifications: string[] = [];
   constructor() { }
-  notify(notification: string) {
+  notify(notification: string): void {
     this.notifications.push(notification);
   }
 }

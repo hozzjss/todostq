@@ -18,9 +18,9 @@ export class LoginComponent {
   ) { }
 
 
-  login(form: HTMLFormElement, event: Event) {
+  login(form: HTMLFormElement, event: Event): void {
     event.preventDefault();
-    const handleError = (err: Response) => {
+    const handleError = (err: Response): void => {
       // triggers showing the error notification
       this.loading = false;
       this.problem = true;

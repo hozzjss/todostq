@@ -11,7 +11,7 @@ export class NotificationComponent implements OnInit {
   show: boolean;
   constructor(public notificationService: NotificationService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.show = true;
     setTimeout(() => this.notificationService.notifications.shift(), 1500);
   }

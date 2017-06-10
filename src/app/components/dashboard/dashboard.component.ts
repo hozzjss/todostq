@@ -19,21 +19,21 @@ export class DashboardComponent implements OnInit {
     private auth: AuthService
   ) { }
 
-  getTodos() {
+  getTodos(): void {
     this.data.getTodos();
   }
 
-  getDone() {
+  getDone(): void {
     // gets todos marked as done
     this.data.getDone();
   }
 
-  toggleAdd() {
+  toggleAdd(): void {
     // this should toggle showing add-todo
     this.addTodos = !this.addTodos;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     // once the component is loaded grab todos
     // if the user is not authenticated log them in else load!
     if (!this.auth.getToken()) {

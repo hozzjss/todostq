@@ -17,7 +17,7 @@ export class TodoComponent {
     private data: DataService
   ) { }
 
-  markDone() {
+  markDone(): void {
     // only if the todo is not marked as done
     if (this.todo.done === 0) {
       this.data.markDone(this.todo);

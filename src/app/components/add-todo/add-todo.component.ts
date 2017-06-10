@@ -17,7 +17,7 @@ export class AddTodoComponent implements OnInit {
     private data: DataService,
   ) { }
 
-  save(form: HTMLFormElement, input: HTMLInputElement, event: Event) {
+  save(form: HTMLFormElement, input: HTMLInputElement, event: Event): void {
     // prevent the form from reloading the page
     event.preventDefault();
 
@@ -29,17 +29,17 @@ export class AddTodoComponent implements OnInit {
     }
   }
 
-  dontCancel(event: Event) {
+  dontCancel(event: Event): void {
     event.stopPropagation();
   }
 
-  cancelAdding() {
+  cancelAdding(): void {
     this.add = 'Save';
     window.onresize = undefined;
     this.cancel.emit();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     adjustLayout();
     window.onresize = adjustLayout;
   }

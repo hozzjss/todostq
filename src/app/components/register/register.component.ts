@@ -14,9 +14,9 @@ export class RegisterComponent {
   constructor(
     private auth: AuthService
   ) { }
-  register(form: HTMLFormElement, event: Event) {
+  register(form: HTMLFormElement, event: Event): void {
     event.preventDefault();
-    const handleError = (err: Response) => {
+    const handleError = (err: Response): void => {
       this.loading = false;
       this.problem = true;
       if (err.status === 422)

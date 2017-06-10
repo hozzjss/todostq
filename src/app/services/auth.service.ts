@@ -3,8 +3,10 @@ import { directory } from '../API/api-directory';
 import { HttpRequestService } from './http-request.service';
 import { NotificationService } from './notification.service';
 import { Router } from '@angular/router';
+import { Response } from '@angular/http';
 import { LoginResponse } from 'app/models/login-response.model';
 import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
@@ -16,11 +18,11 @@ export class AuthService {
     private notification: NotificationService
   ) { }
 
-  register(form: FormData) {
+  register(form: FormData): Observable<Response> {
     return this.http.request(undefined, 'post', directory.register, form);
   }
 
-  login(form: FormData) {
+  login(form: FormData): Observable<Response> {
     return this.http.request(undefined, 'post', directory.login, form);
   }
 
@@ -28,17 +30,17 @@ export class AuthService {
     return this.user ? this.user.token : undefined;
   }
 
-  getUser() {
+  getUser(): LoginResponse {
     return this.user;
   }
 
-  storeUser(user: LoginResponse, type: string) {
+  storeUser(user: LoginResponse, type: string): void {
     this.notification.notify(type);
     this.user = user;
     this.router.navigate(['dashboard']);
   }
 
-  renewSession() {
+  renewSession(): void {
     this.router.navigate(['login']);
   }
 

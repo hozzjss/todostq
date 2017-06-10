@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private auth: AuthService) {  }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.user = this.auth.getUser();
   }
 
