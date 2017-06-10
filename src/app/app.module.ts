@@ -10,6 +10,7 @@ import { AuthService } from './services/auth.service';
 import { TodosService } from './services/todos.service';
 import { DataService } from './services/data.service';
 import { HttpRequestService } from './services/http-request.service';
+import { NotificationService } from './services/notification.service';
 import { OngoingTasksComponent } from './components/ongoing-tasks/ongoing-tasks.component';
 import { DoneTasksComponent } from './components/done-tasks/done-tasks.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -17,6 +18,7 @@ import { TodoComponent } from './components/todo/todo.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AddTodoComponent } from './components/add-todo/add-todo.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     TodoComponent,
     AddTodoComponent,
     HeaderComponent,
-    LoadingComponent
+    LoadingComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     AuthService,
     TodosService,
     DataService,
-    HttpRequestService
+    HttpRequestService,
+    NotificationService
   ],
   bootstrap: [AppComponent]
 })
