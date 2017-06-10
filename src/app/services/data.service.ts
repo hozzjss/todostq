@@ -1,35 +1,89 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Response } from '@angular/http';
 import { LoginResponse } from '../models/login-response.model';
 import { Subject } from 'rxjs/Subject';
+import { TodosService } from './todos.service';
+import { Todo } from '../models/todo.model';
+import 'rxjs/add/operator/map';
+import { CreateResponse } from '../models/create-response.model';
+import { objectToArray, genRandomId } from '../util/util';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class DataService {
+  ongoingTodos: Todo[] = [];
+  doneTodos: Todo[] = [];
   private user: LoginResponse;
   constructor(
-    private router: Router
+    private router: Router,
+    private todos: TodosService,
+    private authService: AuthService,
   ) { }
 
-  getToken(): string {
-    return this.user ? this.user.token : undefined;
+  getTodos() {
+    this.todos.getTodos()
+      .subscribe(response => this.ongoingTodos = response.json());
   }
 
-  getUser() {
-    return this.user;
+  create(form: HTMLFormElement) {
+    // get Todo title
+    const todoTitle = form.getElementsByTagName('input')[0].value;
+    // construct todo being loaded and mark it as being loading
+    const loadingTodo: Todo = { title: todoTitle, id: genRandomId(), loading: true };
+    this.addToOngoing(loadingTodo);
+    const handleResponse = (response: Response) => {
+      const data: CreateResponse = response.json();
+
+      // format new todos
+      const newTodos: Todo[] = objectToArray(data.tasks);
+
+      // sort it
+      const orderedTodos = newTodos.sort((a, b) => a.id - b.id);
+
+      // get the last element that's been added
+      const lastAddedTodo = orderedTodos[orderedTodos.length - 1];
+
+      // remove the loading todo and replace it with the recieved one
+      this.ongoingTodos = this.ongoingTodos.filter(item => item.id !== loadingTodo.id);
+      this.addToOngoing(lastAddedTodo);
+    };
+
+    const handleError = (response: Response) => this.authService.renewSession();
+    return this.todos.create(new FormData(form))
+      .subscribe(handleResponse, handleError);
   }
 
-  storeUser(user: LoginResponse) {
-    // wait for the data then work with it
-    const token$ = new Subject<LoginResponse>();
-    token$.subscribe((value) => {
-      this.user = value;
-      this.router.navigate(['dashboard']);
-    });
-    token$.next(user);
+  getDone() {
+    // gets todos marked as done
+    this.todos.getDone()
+      .subscribe(response => this.doneTodos = response.json());
   }
 
-  renewSession() {
-    this.router.navigate(['login']);
+  addToDone(todo: Todo) {
+    // move it to done
+    this.doneTodos.push(todo);
+    // remove this todo from ongoingTodos
+    this.ongoingTodos = this.ongoingTodos.filter(item => item.id !== todo.id);
+  }
+
+  markDone(todo: Todo) {
+    this.addToDone(todo);
+    const handleError = (response: Response) => this.authService.renewSession();
+    // send this todo to done todos list
+    todo.loading = true;
+    // send the request then
+    this.todos.markDone(todo.id)
+      // after that's done update the todo to be marked as loaded
+      // the only error here is session expiration so renew session
+      .subscribe(val => {
+        todo.loading = false;
+        todo.done = 1;
+      }, handleError);
+  }
+
+  addToOngoing(todo: Todo) {
+    this.ongoingTodos.push(todo);
   }
 
 }
