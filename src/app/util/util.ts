@@ -35,7 +35,9 @@ export const adjustLayout = () => {
   const bodyHeight = document.getElementsByTagName('body')[0].clientHeight;
   const dashboardHeight = document.getElementsByClassName('dashboard')[0].clientHeight;
   const headerHeight = document.getElementsByTagName('header')[0].clientHeight;
-  const totalHeight = dashboardHeight + headerHeight + 'px';
+  // if there's not so many todos usually the body height would be larger
+  const totalHeight = (dashboardHeight + headerHeight) > bodyHeight ?
+   (dashboardHeight + headerHeight + 'px') : bodyHeight + 'px';
   const addTodoEl = document.getElementById('add-todo');
   const formEl = document.getElementById('add-todo-form');
   addTodoEl.style.height = totalHeight;
