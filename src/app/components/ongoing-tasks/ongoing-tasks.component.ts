@@ -8,9 +8,9 @@ import { Todo } from '../../models/todo.model';
 })
 export class OngoingTasksComponent {
   @Input() todos: Todo[];
-  @Output() updateTodos = new EventEmitter<Todo>();
+  @Output() updateTodos = new EventEmitter<any[]>();
 
-  handleDone(event: Todo) {
+  handleDone(event: any[]) {
     // pass the passed todo to dashboard so that it adds it to done todos
     this.updateTodos.emit(event);
   }

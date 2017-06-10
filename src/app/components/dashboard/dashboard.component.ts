@@ -11,6 +11,7 @@ import { Subject } from 'rxjs/Subject';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  // this should be the switch that shows and hides add-todo interface
   addTodos = false;
   ongoingTodos: Todo[];
   doneTodos: Todo[];
