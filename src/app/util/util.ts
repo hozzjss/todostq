@@ -1,9 +1,9 @@
-import { RequestOptions, Headers } from '@angular/http';
+import { RequestOptions, Headers, URLSearchParams } from '@angular/http';
 import { environment as env } from 'environments/environment';
 
 
 export const generateRequestLink = (task: string) => {
-  return `${env.ENDPOINT}/${task}?api_key=${env.KEY}`;
+  return `${env.ENDPOINT}/${task}`;
 };
 
 // generates the options object which contains the headers
@@ -12,10 +12,13 @@ export const generateOptions = (token: string, method: string, body?: any) => {
     'Accept': 'application/json',
     'Authorization': `Bearer ${token}`
   });
+  const search = new URLSearchParams();
+  search.set('api_key', env.KEY);
   return new RequestOptions({
     headers,
     method,
-    body
+    body,
+    search
   });
 };
 
