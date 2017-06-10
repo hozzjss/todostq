@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Todo } from '../../models/todo.model';
 
 @Component({
@@ -8,10 +8,4 @@ import { Todo } from '../../models/todo.model';
 })
 export class OngoingTasksComponent {
   @Input() todos: Todo[];
-  @Output() updateTodos = new EventEmitter<any[]>();
-
-  handleDone(event: any[]) {
-    // pass the passed todo to dashboard so that it adds it to done todos
-    this.updateTodos.emit(event);
-  }
 }
