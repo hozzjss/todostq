@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { directory } from '../API/api-directory';
 import { HttpRequestService } from './http-request.service';
+import { NotificationService } from './notification.service';
 import { Router } from '@angular/router';
 import { LoginResponse } from 'app/models/login-response.model';
 import { Subject } from 'rxjs/Subject';
@@ -11,7 +12,8 @@ export class AuthService {
   private user: LoginResponse;
   constructor(
     private http: HttpRequestService,
-    private router: Router
+    private router: Router,
+    private notification: NotificationService
   ) { }
 
   register(form: FormData) {
@@ -30,14 +32,10 @@ export class AuthService {
     return this.user;
   }
 
-  storeUser(user: LoginResponse) {
-    // wait for the data then work with it
-    const token$ = new Subject<LoginResponse>();
-    token$.subscribe((value) => {
-      this.user = value;
-      this.router.navigate(['dashboard']);
-    });
-    token$.next(user);
+  storeUser(user: LoginResponse, type: string) {
+    this.notification.notify(type);
+    this.user = user;
+    this.router.navigate(['dashboard']);
   }
 
   renewSession() {

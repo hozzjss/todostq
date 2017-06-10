@@ -1,0 +1,16 @@
+@import '../../sass/colors';
+@import '../../sass/mixins';
+.body {
+    @include full-width-height;
+    @include centering-flex(flex-start);
+    box-sizing: border-box;
+    padding-left: 6px;
+    position: absolute;
+    max-width: 200px;
+    max-height: 80px;
+    background-color: $notification;
+    color: $black;
+    border-radius: 1px;
+    left: 2%;
+    bottom: 20px;
+}

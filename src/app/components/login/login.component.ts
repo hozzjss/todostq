@@ -34,6 +34,6 @@ export class LoginComponent {
 
     // register the token >> redirect to dashboard
     this.auth.login(new FormData(form))
-      .subscribe(response => this.auth.storeUser(response.json()), handleError);
+      .subscribe(response => this.auth.storeUser(response.json(), 'Logged in!'), handleError);
   }
 }
