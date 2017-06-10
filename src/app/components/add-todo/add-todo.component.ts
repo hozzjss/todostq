@@ -25,6 +25,7 @@ export class AddTodoComponent implements OnInit {
       this.data.create(form);
       // clear input for new todo input
       input.value = '';
+      this.add = 'Add more';
     }
   }
 
@@ -34,6 +35,7 @@ export class AddTodoComponent implements OnInit {
 
   cancelAdding() {
     this.add = 'Save';
+    window.onresize = undefined;
     this.cancel.emit();
   }
 
