@@ -1,5 +1,5 @@
 <!-- the add interface should be above everything -->
-<app-add-todo (cancel)="toggleAdd()" *ngIf="addTodos" (updateCreated)="updateTodos($event[0],$event[1])"></app-add-todo>
+<app-add-todo (cancel)="toggleAdd()" *ngIf="addTodos" (updateCreated)="addToOngoing($event[0],$event[1])"></app-add-todo>
 
 <!--header on the top-->
 <app-header></app-header>

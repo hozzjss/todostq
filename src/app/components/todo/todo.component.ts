@@ -22,7 +22,7 @@ export class TodoComponent {
   markDone() {
     const handleError = (response: Response) => this.data.renewSession();
     // only if the todo is not marked as done
-    if (!this.todo.done) {
+    if (this.todo.done === 0) {
       // sent this todo to done todos list
       this.updateDone.emit(this.todo);
       // send the request then

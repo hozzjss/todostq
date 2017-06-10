@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { TodosService } from '../../services/todos.service';
 import { Todo } from '../../models/todo.model';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-dashboard',
@@ -32,6 +33,18 @@ export class DashboardComponent implements OnInit {
   toggleAdd() {
     // this should toggle showing add-todo
     this.addTodos = !this.addTodos;
+  }
+
+  addToOngoing(todo: Todo, loaded$: Subject<Todo>) {
+    this.ongoingTodos.push(todo);
+    loaded$.subscribe((todoLoaded$) => {
+      // find the todo we pushed and remove it
+      // it would have a randomly generated id
+      this.ongoingTodos = this.ongoingTodos.filter(item => item.id !== todo.id);
+      // push then the received todo to the list
+      this.ongoingTodos.push(todoLoaded$);
+      console.log(this.ongoingTodos);
+    });
   }
 
   addToDone(todo: Todo) {

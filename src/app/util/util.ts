@@ -41,3 +41,5 @@ export const adjustLayout = () => {
   addTodoEl.style.height = totalHeight;
   formEl.style.top = (window.innerHeight / 2) - (formEl.clientHeight / 2) + 'px';
 };
+
+export const genRandomId = () => Math.round(Math.random() * 999999);
