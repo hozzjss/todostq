@@ -9,6 +9,7 @@ import 'rxjs/add/operator/map';
 import { CreateResponse } from '../models/create-response.model';
 import { objectToArray, genRandomId } from '../util/util';
 import { AuthService } from './auth.service';
+import { NotificationService } from './notification.service';
 
 @Injectable()
 export class DataService {
@@ -19,6 +20,7 @@ export class DataService {
     private router: Router,
     private todos: TodosService,
     private authService: AuthService,
+    private notificationService: NotificationService
   ) { }
 
   getTodos() {
@@ -33,6 +35,9 @@ export class DataService {
     const loadingTodo: Todo = { title: todoTitle, id: genRandomId(), loading: true };
     this.addToOngoing(loadingTodo);
     const handleResponse = (response: Response) => {
+      // notify the user of the success of the operation
+      this.notificationService.notify(todoTitle.substr(0, 12) + 'Added sucessfully');
+
       const data: CreateResponse = response.json();
 
       // format new todos
@@ -49,7 +54,10 @@ export class DataService {
       this.addToOngoing(lastAddedTodo);
     };
 
-    const handleError = (response: Response) => this.authService.renewSession();
+    const handleError = (response: Response) => {
+      this.notificationService.notify('Session expired please relogin.');
+      this.authService.renewSession();
+    };
     return this.todos.create(new FormData(form))
       .subscribe(handleResponse, handleError);
   }
