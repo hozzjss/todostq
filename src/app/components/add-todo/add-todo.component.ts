@@ -34,6 +34,7 @@ export class AddTodoComponent implements OnInit {
 
   cancelAdding() {
     this.add = 'Save';
+    window.onresize = undefined;
     this.cancel.emit();
   }
 
