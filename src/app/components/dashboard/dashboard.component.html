@@ -1,5 +1,5 @@
 <!-- the add interface should be above everything -->
-<app-add-todo (cancel)="toggleAdd()" *ngIf="addTodos" (updateCreated)="addToOngoing($event[0],$event[1])"></app-add-todo>
+<app-add-todo (cancel)="toggleAdd()" *ngIf="addTodos"></app-add-todo>
 
 <!--header on the top-->
 <app-header></app-header>
@@ -18,7 +18,7 @@
     <!-- End todos list header-->
 
     <div class="content">
-      <app-ongoing-tasks (updateTodos)="addToDone($event[0], $event[1])" [todos]="ongoingTodos"></app-ongoing-tasks>
+      <app-ongoing-tasks [todos]="data.ongoingTodos"></app-ongoing-tasks>
     </div>
   </div>
   <!-- End ongoing tasks -->
@@ -32,7 +32,7 @@
     <!-- End todos list header-->
 
     <div class="content">
-      <app-done-tasks [todos]="doneTodos"></app-done-tasks>
+      <app-done-tasks [todos]="data.doneTodos"></app-done-tasks>
     </div>
   </div>
   <!-- End done tasks -->
