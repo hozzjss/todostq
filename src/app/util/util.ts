@@ -23,7 +23,7 @@ export const generateOptions = (token: string, method: string, body?: any): Requ
 };
 
 // from object of objects to an array of objects
-export const objectToArray = (obj: object): any[] => {
+export const objectToArray = (obj): any[] => {
   // tslint:disable:forin
   if (obj instanceof Array) {
     return obj;
