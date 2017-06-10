@@ -1,7 +1,6 @@
 // tslint:disable:curly
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { DataService } from '../../services/data.service';
 import { Response } from '@angular/http';
 
 @Component({
@@ -15,8 +14,7 @@ export class LoginComponent {
   problem = false;
 
   constructor(
-    private auth: AuthService,
-    private data: DataService
+    private auth: AuthService
   ) { }
 
 
@@ -36,6 +34,6 @@ export class LoginComponent {
 
     // register the token >> redirect to dashboard
     this.auth.login(new FormData(form))
-      .subscribe(response => this.data.storeUser(response.json()), handleError);
+      .subscribe(response => this.auth.storeUser(response.json()), handleError);
   }
 }

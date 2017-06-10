@@ -1,7 +1,6 @@
 // tslint:disable:curly
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-register',
@@ -13,8 +12,7 @@ export class RegisterComponent {
   error = '';
   problem = false;
   constructor(
-    private auth: AuthService,
-    private data: DataService
+    private auth: AuthService
   ) { }
   register(form: HTMLFormElement, event: Event) {
     event.preventDefault();
@@ -29,6 +27,6 @@ export class RegisterComponent {
     this.loading = true;
 
     this.auth.register(new FormData(form))
-      .subscribe(response => this.data.storeUser(response.json().user), handleError);
+      .subscribe(response => this.auth.storeUser(response.json().user), handleError);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../services/data.service';
 import { LoginResponse } from '../../models/login-response.model';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,10 +10,10 @@ import { LoginResponse } from '../../models/login-response.model';
 export class HeaderComponent implements OnInit {
   user: LoginResponse;
 
-  constructor(private data: DataService) {  }
+  constructor(private auth: AuthService) {  }
 
   ngOnInit() {
-    this.user = this.data.getUser();
+    this.user = this.auth.getUser();
   }
 
 }
