@@ -47,9 +47,12 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  addToDone(todo: Todo) {
-    todo.done = 1;
+  addToDone(todo: Todo, loaded$: Subject<boolean>) {
     this.doneTodos.push(todo);
+    loaded$.subscribe(val => {
+      todo.loading = false;
+      todo.done = 1;
+    });
     this.ongoingTodos = this.ongoingTodos.filter(item => item.id !== todo.id);
   }
 
