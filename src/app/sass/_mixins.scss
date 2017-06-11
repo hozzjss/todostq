@@ -55,17 +55,22 @@
 
     //
     input, button {
-        width: 100%;
         font-size: 16px;
     }
 
     button {
+        width: 100%;
         @include badge-button;
         @include active-bg($green + 20);
         margin-bottom: 10px;
     }
 
-    input {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="name"]
+    {
+        width: 100%;
         @include nice-input;
     }
 }

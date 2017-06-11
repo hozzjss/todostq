@@ -51,7 +51,12 @@ table {
 	border-spacing: 0;
 }
 
-input, button {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="name"],
+	button
+	{
 	border: 0;
 	background-color: $green;
 	// UX/mobile: buttons need to be at least this size 
