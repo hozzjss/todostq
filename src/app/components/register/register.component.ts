@@ -26,7 +26,8 @@ export class RegisterComponent {
     };
     this.loading = true;
 
-    this.auth.register(new FormData(form))
+    const checkboxEl = <HTMLInputElement>form.querySelector('#remember');
+    this.auth.register(new FormData(form), checkboxEl.checked)
       .subscribe(response => this.auth.storeUser(response.json().user, 'Registered!'), handleError);
   }
 }

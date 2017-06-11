@@ -11,21 +11,27 @@
     justify-content: flex-end;
     align-items: center;
     padding: 8px 2%;
+    .user-details {
+        margin: 0 15px;
+        h3 {
+            color: #fff;
+            font-weight: 600;
+            font-size: 20px
+        }
+        a {
+            display: block;
+            margin-top: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+
+    .user-img img{
+        width: 90px;
+        margin-right: 10px;
+    }
 }
 
-.user-details {
-    margin: 0 15px;
-}
-
-.user-details h3 {
-    color: #fff;
-    font-weight: 600;
-    font-size: 20px
-}
-.user-img img{
-    width: 90px;
-    margin-right: 10px;
-}
 
 @include headerQuery(992px, 50px);
 @include headerQuery(1200px, 100px);

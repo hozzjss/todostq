@@ -31,9 +31,9 @@ export class LoginComponent {
     };
 
     this.loading = true;
-
+    const checkboxEl = <HTMLInputElement>form.querySelector('#remember');
     // register the token >> redirect to dashboard
-    this.auth.login(new FormData(form))
+    this.auth.login(new FormData(form), checkboxEl.checked)
       .subscribe(response => this.auth.storeUser(response.json(), 'Logged in!'), handleError);
   }
 }

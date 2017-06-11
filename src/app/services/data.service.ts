@@ -16,6 +16,10 @@ export class DataService {
   ongoingTodos: Todo[] = [];
   doneTodos: Todo[] = [];
   private user: LoginResponse;
+  handleError = (response: Response) => {
+    this.notificationService.notify('Session expired please relogin.');
+    this.authService.renewSession();
+  }
   constructor(
     private router: Router,
     private todos: TodosService,
@@ -51,18 +55,14 @@ export class DataService {
       this.addToOngoing(lastAddedTodo);
     };
 
-    const handleError = (response: Response) => {
-      this.notificationService.notify('Session expired please relogin.');
-      this.authService.renewSession();
-    };
     this.todos.create(new FormData(form))
-      .subscribe(handleResponse, handleError);
+      .subscribe(handleResponse, this.handleError);
   }
 
   getDone(): void {
     // gets todos marked as done
     this.todos.getDone()
-      .subscribe(response => this.doneTodos = response.json());
+      .subscribe(response => this.doneTodos = response.json(), this.handleError);
   }
 
   addToDone(todo: Todo): void {
@@ -74,7 +74,6 @@ export class DataService {
 
   markDone(todo: Todo): void {
     this.addToDone(todo);
-    const handleError = (response: Response) => this.authService.renewSession();
     // send this todo to done todos list
     todo.loading = true;
     // send the request then
@@ -84,7 +83,7 @@ export class DataService {
       .subscribe(val => {
         todo.loading = false;
         todo.done = 1;
-      }, handleError);
+      }, this.handleError);
   }
 
   addToOngoing(todo: Todo): void {
