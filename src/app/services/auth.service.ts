@@ -33,6 +33,7 @@ export class AuthService {
     localStorage.removeItem('user');
     this.user = undefined;
     this.router.navigate(['login']);
+    this.notification.notify('You\'ve been successfully logged out!');
   }
 
   getToken(): string {
