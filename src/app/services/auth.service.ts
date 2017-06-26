@@ -32,7 +32,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('user');
     this.user = undefined;
-    this.router.navigate(['login']);
+    this.router.navigate(['auth/login']);
     this.notification.notify('You\'ve been successfully logged out!');
   }
 

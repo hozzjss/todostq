@@ -9,6 +9,6 @@
     </label>
     <button type="submit">LOGIN <img class="badge" src="assets/forward.png" alt=""> </button>
     <p *ngIf="problem" class="warning"> {{ error }} </p>
-    <p class="footnote">Not registered? <a [routerLink]="['/register']">Create an account</a></p>
+    <p class="footnote">Not registered? <a [routerLink]="['/auth/register']">Create an account</a></p>
   </form>
 </div>
