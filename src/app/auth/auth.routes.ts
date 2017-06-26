@@ -21,4 +21,4 @@ export const authRoutes: Routes = [
         canActivate: [NotLoggedInGuard]
     },
 
-]
+];

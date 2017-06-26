@@ -17,7 +17,6 @@ export const routes: Routes = [
     },
     {
         path: 'dashboard',
-        component: DashboardComponent,
-        canActivate: [LoggedInGuard]
+        loadChildren: '../dashboard/dashboard.module#DashboardModule'
     }
 ];

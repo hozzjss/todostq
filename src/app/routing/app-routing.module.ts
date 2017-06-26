@@ -6,9 +6,6 @@ import { LoggedInGuard } from '../guards/logged-in.guard';
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-  providers: [
-    LoggedInGuard
-  ]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }
