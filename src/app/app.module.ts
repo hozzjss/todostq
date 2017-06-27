@@ -16,7 +16,7 @@ import { HttpRequestService } from './services/http-request.service';
 @NgModule({
   declarations: [
     AppComponent,
-    NotificationComponent
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
