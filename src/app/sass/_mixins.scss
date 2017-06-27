@@ -64,6 +64,12 @@
         @include active-bg($green + 20);
         margin-bottom: 10px;
     }
+    
+    em.invalid-input {
+        color: $red;
+        align-self: flex-end;
+        margin-bottom: 4px;
+    }
 
     input[type="text"],
     input[type="email"],

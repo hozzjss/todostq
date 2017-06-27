@@ -10,8 +10,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  private password: FormControl;
-  private email: FormControl;
+  password: FormControl;
+  email: FormControl;
   emailError: string[];
   loginForm: FormGroup;
   loading: boolean;

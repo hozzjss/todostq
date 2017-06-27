@@ -10,7 +10,7 @@ import {
 } from './index';
 
 import { authRoutes } from './auth.routes';
-import { KeysPipe } from '../pipes/keys.pipe';
+import { ParseErrorPipe } from '../pipes/parse-error.pipe';
 
 
 @NgModule({
@@ -24,7 +24,7 @@ import { KeysPipe } from '../pipes/keys.pipe';
     RegisterComponent,
     LoginComponent,
     LoadingComponent,
-    KeysPipe
+    ParseErrorPipe
   ],
   providers: [
     NotLoggedInGuard
