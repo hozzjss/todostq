@@ -63,6 +63,5 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password
     });
-    this.emailError = Object.keys(this.email.errors);
   }
 }

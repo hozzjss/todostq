@@ -18,19 +18,6 @@
                 margin: 0 5px 0 0;
             }
         }
-        input.error {
-            background-color: #E3C3C5;
-            &::placeholder {
-                color: #999;
-            }
-        }
-        button[disabled] {
-            background-color: #777;
-            color: #ddd !important;
-            img {
-                background-color: #ddd;
-            }
-        }
     }
 }
 
