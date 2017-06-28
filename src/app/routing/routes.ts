@@ -12,18 +12,11 @@ export const routes: Routes = [
         pathMatch: 'full',
     },
     {
-        path: 'login',
-        component: LoginComponent,
-        canActivate: [NotLoggedInGuard]
-    },
-    {
-        path: 'register',
-        component: RegisterComponent,
-        canActivate: [NotLoggedInGuard]
+        path: 'auth',
+        loadChildren: '../auth/auth.module#AuthModule'
     },
     {
         path: 'dashboard',
-        component: DashboardComponent,
-        canActivate: [LoggedInGuard]
+        loadChildren: '../dashboard/dashboard.module#DashboardModule'
     }
 ];

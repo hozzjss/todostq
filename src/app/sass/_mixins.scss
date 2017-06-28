@@ -64,6 +64,12 @@
         @include active-bg($green + 20);
         margin-bottom: 10px;
     }
+    
+    em.invalid-input {
+        color: $red;
+        align-self: flex-end;
+        margin-bottom: 4px;
+    }
 
     input[type="text"],
     input[type="email"],
@@ -72,5 +78,19 @@
     {
         width: 100%;
         @include nice-input;
+    }
+    input.error {
+        background-color: #E3C3C5;
+        &::placeholder {
+            color: #999;
+        }
+    }
+    button[disabled] {
+        background-color: #777;
+        color: #ddd !important;
+        cursor: not-allowed;
+        img {
+            background-color: #ddd;
+        }
     }
 }
