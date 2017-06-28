@@ -11,8 +11,8 @@ export class ParseErrorPipe implements PipeTransform {
         return 'Required';
       } else if (value.email) {
         return 'Invalid email address';
-      } else if (value.name) {
-        // TODO: implement register validation
+      } else if (value.pattern) {
+        return 'Please enter your real name';
       }
     }
     // if there are no errors pass back an empty array
